@@ -1,0 +1,32 @@
+﻿th,td {
+    padding: 10px;
+}
+
+th {
+    background-color: aliceblue;
+}
+
+button {
+    margin: 5px;
+}
+
+label{
+    margin:5px 0px 1px 0px;
+    background-color:aliceblue;
+}
+
+#wellcome {
+    position: absolute;
+    bottom: 350px;
+    left: 250px;
+    color: green;
+    font-size: 45px;
+    font-family: Chiller;
+    background-color: aliceblue;
+}
+
+._container {
+    position: relative;
+    text-align: center;
+    color: white;
+}

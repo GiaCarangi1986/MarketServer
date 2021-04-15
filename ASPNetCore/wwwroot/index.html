@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>MARKET</title>
+    <link href="css\bootstrap.css" rel="stylesheet">
+    <link href="css\bootstrap-grid.css" rel="stylesheet">
+    <link href="css\bootstrap-reboot.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Fresh Food</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Личный кабинет</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#spisok">Продукты</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Категории
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                            <li>
+                                <a class="dropdown-item" href="#">молочные продукты</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">алкогольные напитки</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">кондитерские изделия</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">овощи и фрукты</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#p">хлебобулочные изделия</a>
+                            <li>
+                                <a class="dropdown-item" href="#">безалкогольные напитки</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">замороженные продукты</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Корзина</a>
+                    </li>
+                </ul>
+
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Поиск..." aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Найти</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!--
+    <div>
+        <div class="_container">
+            <img src="images/frukti.jpg" alt="фрукты" style="width:100%">
+            <div id="wellcome">Добро пожаловать на сайт заказа продуктов на дом</div>
+        </div>
+        <p>&nbsp;</p>
+        <h1 id="spisok"> Список продуктов</h1>
+
+        <p>&nbsp;</p>
+        <div class="container">
+            <table class="table_blur">
+                <thead>
+                    <tr>
+                        <th>
+                            id продукта
+                        </th>
+                        <th>
+                            Цена
+                        </th>
+                        <th>
+                            Срок годности, ч
+                        </th>
+                        <th>
+                            Название
+                        </th>
+                    </tr>
+
+                </thead>
+                <tbody id="product">
+                </tbody>
+            </table>
+
+
+            <p>&nbsp;</p>
+            <h2>Добавление продукта</h2>
+            <form>
+                <div class="form-group">
+                    <label for="createPrice">Цена</label>
+                    <input id="createPrice" class="form-control" type="text" placeholder="Цена" required>
+
+                    <label for="createScorGodnosti">Срок годности</label>
+                    <input id="createScorGodnosti" class="form-control" type="text" placeholder="Срок годности" required>
+
+                    <label for="createTitle">Название</label>
+                    <input id="createTitle" class="form-control" type="text" placeholder="Название" required>
+
+                    <label for="createCategory">id категории</label>
+                    <input id="createCategory" class="form-control" type="text" placeholder="id категории" required>
+
+                </div>
+                <br>
+                <button onclick="CreateProduct();" type="submit" class='btn btn-outline-success'>Добавить продукт</button>
+
+
+            </form>
+            <br>
+
+            <p>&nbsp;</p>
+            <form id="editForm">
+                <h2>Изменение данных о продукте, id = <span id="editProductId"></span></h2>
+                <div class="form-group">
+                    <label for="editprice">Цена</label>
+                    <input id="editprice" class="form-control" type="text" placeholder="Цена" required>
+
+                    <label for="editscorgodnosti">Срок годности</label>
+                    <input id="editscorgodnosti" class="form-control" type="text" placeholder="Срок годности" required>
+
+                    <label for="edittitle">Название</label>
+                    <input id="edittitle" class="form-control" type="text" placeholder="Название" required>
+                </div>
+                <br>
+                <button onclick="editProduct();" type="submit" class='btn btn-outline-success'>Сохранить изменения</button>
+
+            </form>
+        </div>
+
+
+
+    </div>-->
+    <div id="productContent"></div>
+
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/16.11.0/umd/react.development.js"></script>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js"></script>
+    <script type="module" src="js/Product.jsx"></script>
+</body>
+    </html>
