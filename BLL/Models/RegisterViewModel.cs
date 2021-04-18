@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace DAL.Model
+namespace BLL.Models
 {
     public class RegisterViewModel
     {

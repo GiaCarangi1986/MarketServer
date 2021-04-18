@@ -3,9 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ASPNetCore.Model;
+//using DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using BLL;
+using BLL.Interfaces;
+using BLL.Models;
+using DAL;
+using DAL.Repositories;
+using Microsoft.AspNetCore.Cors;
 
 namespace ASPNetCore.Controllers
 {
@@ -13,25 +19,25 @@ namespace ASPNetCore.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly MarketContext _context;
+        //private readonly MarketContext _context;
+        private readonly IDbCrud dbOp;
 
-        public ProductsController(MarketContext context)
+        public ProductsController(IDbCrud dbCrud)
         {
-            _context = context;
-            if (_context.Product.Count() == 0)
+            dbOp = dbCrud;
+            /*if (_context.Product.Count() == 0)
             {
                 //_context.Product.Add(new Product {ProductId=1, CategoryId_FK=1, Expiration_date=240, Now_cost=50, Title="Milk", Category=new Category { CategoryId=1,Title= "Milk products", Product=null } });
                 _context.Product.Add(new Product { IdProduct=1, IdCategoryFk=1, NowCost=50, ScorGodnostiO=50, Title="Milk" });
                 _context.Product.Add(new Product { IdProduct = 2, IdCategoryFk = 2, NowCost = 25, ScorGodnostiO = 30, Title = "Limonade" });
                 _context.SaveChanges();
-            }
+            }*/
         }
 
         [HttpGet]
-        public IEnumerable<Product> GetAll()
+        public IEnumerable<ProductModel> GetAll()
         {
-            //return _context.Product.Include(p => p.IdCategoryFkNavigation);
-            return _context.Product;
+            return dbOp.GetAllProducts();
         }
 
         [HttpGet("{id}")]
@@ -42,39 +48,41 @@ namespace ASPNetCore.Controllers
                 return BadRequest(ModelState);
             }
 
-            var product = await _context.Product.SingleOrDefaultAsync(m => m.IdProduct == id);
+            var product = dbOp.GetProduct(id);
+            /*var product = await _context.Product.SingleOrDefaultAsync(m => m.IdProduct == id);
 
             if (product == null)
             {
                 return NotFound();
-            }
+            }*/
             return Ok(product);
         }
 
         [Authorize(Roles = "admin")]
         [HttpPost]
-        public async Task<IActionResult> CreateProduct([FromBody] Product product)
+        public async Task<IActionResult> CreateProduct([FromBody] ProductModel product)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Product.Add(product);
-            await _context.SaveChangesAsync();
+            dbOp.CreateProduct(product);
+            /*_context.Product.Add(product);
+            await _context.SaveChangesAsync();*/
 
             return CreatedAtAction("GetProduct", new { id = product.IdProduct }, product);
         }
 
         [Authorize(Roles = "admin")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] Product product)
+        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] ProductModel product)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            var item = _context.Product.Find(id);
+            /*var item = _context.Product.Find(id);
             if (item == null)
             {
                 return NotFound();
@@ -85,11 +93,14 @@ namespace ASPNetCore.Controllers
             item.Title = product.Title;
             //item.Category = product.Category;
             _context.Product.Update(item);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();*/
+
+            dbOp.UpdateProduct(product);
+
             return NoContent();
         }
 
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> deleteProduct([FromRoute] int id)
         {
@@ -97,13 +108,14 @@ namespace ASPNetCore.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var item = _context.Product.Find(id);
+            /*var item = _context.Product.Find(id);
             if (item == null)
             {
                 return NotFound();
             }
             _context.Product.Remove(item);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();*/
+            dbOp.DeleteProduct(id);
             return NoContent();
         }
     }

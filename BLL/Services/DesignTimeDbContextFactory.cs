@@ -1,13 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.IO;
+﻿using BLL.Interfaces;
+using BLL.Models;
+using DAL;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-using ASPNetCore.Model;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
 
-namespace DAL.Model
+
+namespace BLL.Services
 {
     public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<MarketContext>
     {

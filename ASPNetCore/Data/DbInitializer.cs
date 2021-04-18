@@ -1,6 +1,8 @@
-﻿using ASPNetCore.Model;
+﻿//using DAL;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using DAL;
 
 namespace ASPNetCore.Data
 {

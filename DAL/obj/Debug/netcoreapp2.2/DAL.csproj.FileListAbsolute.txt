@@ -31,3 +31,15 @@ C:\Users\Лиза\Desktop\Конструирование интернет-при
 C:\Users\Лиза\Desktop\Конструирование интернет-приложений\6 лаб\ASPNetCore\ASPNetCore\DAL\obj\Debug\netcoreapp2.2\DAL.dll
 C:\Users\Лиза\Desktop\Конструирование интернет-приложений\6 лаб\ASPNetCore\ASPNetCore\DAL\obj\Debug\netcoreapp2.2\DAL.pdb
 C:\Users\Лиза\Desktop\Конструирование интернет-приложений\6 лаб\ASPNetCore\ASPNetCore\DAL\obj\Debug\netcoreapp2.2\DAL.genruntimeconfig.cache
+C:\Users\Лиза\Desktop\Конструирование интернет-приложений\курсовая\ASPNetCore\ASPNetCore\DAL\obj\Debug\netcoreapp2.2\DAL.csprojAssemblyReference.cache
+C:\Users\Лиза\Desktop\Конструирование интернет-приложений\курсовая\ASPNetCore\ASPNetCore\DAL\obj\Debug\netcoreapp2.2\DAL.AssemblyInfoInputs.cache
+C:\Users\Лиза\Desktop\Конструирование интернет-приложений\курсовая\ASPNetCore\ASPNetCore\DAL\obj\Debug\netcoreapp2.2\DAL.AssemblyInfo.cs
+C:\Users\Лиза\Desktop\Конструирование интернет-приложений\курсовая\ASPNetCore\ASPNetCore\DAL\obj\Debug\netcoreapp2.2\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Лиза\Desktop\Конструирование интернет-приложений\курсовая\ASPNetCore\ASPNetCore\DAL\obj\Debug\netcoreapp2.2\DAL.dll
+C:\Users\Лиза\Desktop\Конструирование интернет-приложений\курсовая\ASPNetCore\ASPNetCore\DAL\obj\Debug\netcoreapp2.2\DAL.pdb
+C:\Users\Лиза\Desktop\Конструирование интернет-приложений\курсовая\ASPNetCore\ASPNetCore\DAL\bin\Debug\netcoreapp2.2\DAL.deps.json
+C:\Users\Лиза\Desktop\Конструирование интернет-приложений\курсовая\ASPNetCore\ASPNetCore\DAL\bin\Debug\netcoreapp2.2\DAL.runtimeconfig.json
+C:\Users\Лиза\Desktop\Конструирование интернет-приложений\курсовая\ASPNetCore\ASPNetCore\DAL\bin\Debug\netcoreapp2.2\DAL.runtimeconfig.dev.json
+C:\Users\Лиза\Desktop\Конструирование интернет-приложений\курсовая\ASPNetCore\ASPNetCore\DAL\bin\Debug\netcoreapp2.2\DAL.dll
+C:\Users\Лиза\Desktop\Конструирование интернет-приложений\курсовая\ASPNetCore\ASPNetCore\DAL\bin\Debug\netcoreapp2.2\DAL.pdb
+C:\Users\Лиза\Desktop\Конструирование интернет-приложений\курсовая\ASPNetCore\ASPNetCore\DAL\obj\Debug\netcoreapp2.2\DAL.genruntimeconfig.cache

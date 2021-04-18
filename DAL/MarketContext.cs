@@ -1,11 +1,10 @@
-﻿using System;
-using ASPNetCoreApp.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-
-namespace ASPNetCore.Model
+﻿namespace DAL
 {
+    using System;
+    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Metadata;
+
     public partial class MarketContext : IdentityDbContext<User>
     {
         public MarketContext()
@@ -23,7 +22,7 @@ namespace ASPNetCore.Model
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<OrderLine> OrderLine { get; set; }
         public virtual DbSet<Product> Product { get; set; }
-        //public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<User> User { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -1,0 +1,12 @@
+C:\Users\Лиза\Desktop\Конструирование интернет-приложений\курсовая\ASPNetCore\ASPNetCore\BLL\obj\Debug\netcoreapp2.2\BLL.csprojAssemblyReference.cache
+C:\Users\Лиза\Desktop\Конструирование интернет-приложений\курсовая\ASPNetCore\ASPNetCore\BLL\obj\Debug\netcoreapp2.2\BLL.AssemblyInfoInputs.cache
+C:\Users\Лиза\Desktop\Конструирование интернет-приложений\курсовая\ASPNetCore\ASPNetCore\BLL\obj\Debug\netcoreapp2.2\BLL.AssemblyInfo.cs
+C:\Users\Лиза\Desktop\Конструирование интернет-приложений\курсовая\ASPNetCore\ASPNetCore\BLL\obj\Debug\netcoreapp2.2\BLL.csproj.CoreCompileInputs.cache
+C:\Users\Лиза\Desktop\Конструирование интернет-приложений\курсовая\ASPNetCore\ASPNetCore\BLL\bin\Debug\netcoreapp2.2\BLL.deps.json
+C:\Users\Лиза\Desktop\Конструирование интернет-приложений\курсовая\ASPNetCore\ASPNetCore\BLL\bin\Debug\netcoreapp2.2\BLL.dll
+C:\Users\Лиза\Desktop\Конструирование интернет-приложений\курсовая\ASPNetCore\ASPNetCore\BLL\bin\Debug\netcoreapp2.2\BLL.pdb
+C:\Users\Лиза\Desktop\Конструирование интернет-приложений\курсовая\ASPNetCore\ASPNetCore\BLL\bin\Debug\netcoreapp2.2\DAL.dll
+C:\Users\Лиза\Desktop\Конструирование интернет-приложений\курсовая\ASPNetCore\ASPNetCore\BLL\bin\Debug\netcoreapp2.2\DAL.pdb
+C:\Users\Лиза\Desktop\Конструирование интернет-приложений\курсовая\ASPNetCore\ASPNetCore\BLL\obj\Debug\netcoreapp2.2\BLL.csproj.CopyComplete
+C:\Users\Лиза\Desktop\Конструирование интернет-приложений\курсовая\ASPNetCore\ASPNetCore\BLL\obj\Debug\netcoreapp2.2\BLL.dll
+C:\Users\Лиза\Desktop\Конструирование интернет-приложений\курсовая\ASPNetCore\ASPNetCore\BLL\obj\Debug\netcoreapp2.2\BLL.pdb

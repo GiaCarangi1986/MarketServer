@@ -4902,12 +4902,29 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
+      "BLL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "DAL": "1.0.0",
+          "Microsoft.Extensions.Configuration": "2.2.0",
+          "Microsoft.Extensions.Configuration.FileExtensions": "2.2.0",
+          "Microsoft.Extensions.Configuration.Json": "2.2.0"
+        },
+        "compile": {
+          "bin/placeholder/BLL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BLL.dll": {}
+        }
+      },
       "DAL/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
         "dependencies": {
           "Microsoft.AspNetCore": "2.2.0",
           "Microsoft.AspNetCore.App": "2.2.0",
+          "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.EntityFrameworkCore": "2.2.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.0"
         },
@@ -13394,6 +13411,11 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
+    "BLL/1.0.0": {
+      "type": "project",
+      "path": "../BLL/BLL.csproj",
+      "msbuildProject": "../BLL/BLL.csproj"
+    },
     "DAL/1.0.0": {
       "type": "project",
       "path": "../DAL/DAL.csproj",
@@ -13402,7 +13424,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
-      "DAL >= 1.0.0",
+      "BLL >= 1.0.0",
       "JavaScriptEngineSwitcher.ChakraCore >= 3.9.1",
       "JavaScriptEngineSwitcher.ChakraCore.Native.win-x64 >= 3.9.1",
       "JavaScriptEngineSwitcher.ChakraCore.Native.win-x86 >= 3.9.1",
@@ -13455,8 +13477,8 @@
         "netcoreapp2.2": {
           "targetAlias": "netcoreapp2.2",
           "projectReferences": {
-            "C:\\Users\\Лиза\\Desktop\\Конструирование интернет-приложений\\курсовая\\ASPNetCore\\ASPNetCore\\DAL\\DAL.csproj": {
-              "projectPath": "C:\\Users\\Лиза\\Desktop\\Конструирование интернет-приложений\\курсовая\\ASPNetCore\\ASPNetCore\\DAL\\DAL.csproj"
+            "C:\\Users\\Лиза\\Desktop\\Конструирование интернет-приложений\\курсовая\\ASPNetCore\\ASPNetCore\\BLL\\BLL.csproj": {
+              "projectPath": "C:\\Users\\Лиза\\Desktop\\Конструирование интернет-приложений\\курсовая\\ASPNetCore\\ASPNetCore\\BLL\\BLL.csproj"
             }
           }
         }

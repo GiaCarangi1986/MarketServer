@@ -2,8 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ASPNetCore.Model;
-using ASPNetCoreApp.Models;
+using DAL;
 using JavaScriptEngineSwitcher.ChakraCore;
 using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
 using Microsoft.AspNetCore.Builder;
@@ -17,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using React.AspNet;
 using Microsoft.Extensions.Logging;
+using BLL;
 
 namespace ASPNetCore
 {
@@ -29,17 +29,18 @@ namespace ASPNetCore
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
+            services.RegisterBllServices(Configuration);
             services.AddMemoryCache();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddReact();
             services.AddJsEngineSwitcher(options => options.DefaultEngineName = ChakraCoreJsEngine.EngineName).AddChakraCore();
 
-            var connection = Configuration.GetConnectionString("DefaultConnection");
+            //var connection = Configuration.GetConnectionString("DefaultConnection");
 
-            services.AddIdentity<User, IdentityRole>()
-                .AddEntityFrameworkStores<MarketContext>();
+            //services.AddIdentity<User, IdentityRole>()
+                //.AddEntityFrameworkStores<MarketContext>();
 
-            services.AddDbContext<MarketContext>(options => options.UseSqlServer(connection));
+            //services.AddDbContext<MarketContext>(options => options.UseSqlServer(connection));
 
             services.AddMvc().AddJsonOptions(options => {
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;

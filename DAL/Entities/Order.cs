@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace ASPNetCore.Model
+﻿
+namespace DAL
 {
+    using System;
+    using System.Collections.Generic;
+
     public partial class Order
     {
         public Order()

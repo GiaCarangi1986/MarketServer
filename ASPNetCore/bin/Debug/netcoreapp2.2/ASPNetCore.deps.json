@@ -29,7 +29,7 @@
     ".NETCoreApp,Version=v2.2": {
       "ASPNetCore/1.0.0": {
         "dependencies": {
-          "DAL": "1.0.0",
+          "BLL": "1.0.0",
           "JavaScriptEngineSwitcher.ChakraCore": "3.9.1",
           "JavaScriptEngineSwitcher.ChakraCore.Native.win-x64": "3.9.1",
           "JavaScriptEngineSwitcher.ChakraCore.Native.win-x86": "3.9.1",
@@ -571,10 +571,25 @@
           "System.Threading.Tasks": "4.3.0"
         }
       },
+      "BLL/1.0.0": {
+        "dependencies": {
+          "DAL": "1.0.0",
+          "Microsoft.Extensions.Configuration": "2.2.0",
+          "Microsoft.Extensions.Configuration.FileExtensions": "2.2.0",
+          "Microsoft.Extensions.Configuration.Json": "2.2.0"
+        },
+        "runtime": {
+          "BLL.dll": {}
+        },
+        "compile": {
+          "BLL.dll": {}
+        }
+      },
       "DAL/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore": "2.2.0",
           "Microsoft.AspNetCore.App": "2.2.0",
+          "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.EntityFrameworkCore": "2.2.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.0"
         },
@@ -4004,6 +4019,11 @@
       "sha512": "sha512-td7x21K8LalpjTWCzW/nQboQIFbq9i0r+PCyBBCdLWWnm4NBcdN18vpz/G9hCpUaCIfRL+ZxJNVTywlNlB1aLQ==",
       "path": "system.linq.parallel/4.3.0",
       "hashPath": "system.linq.parallel.4.3.0.nupkg.sha512"
+    },
+    "BLL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "DAL/1.0.0": {
       "type": "project",

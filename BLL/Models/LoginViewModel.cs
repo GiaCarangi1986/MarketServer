@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DAL.Model
+namespace BLL.Models
 {
  public class LoginViewModel
  {
