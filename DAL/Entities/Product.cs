@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-
     public partial class Product
     {
         public Product()

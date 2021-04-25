@@ -72,6 +72,10 @@
 
                 entity.ToTable("Delivery_line");
 
+                entity.HasIndex(e => e.IdDeliveryFk);
+
+                entity.HasIndex(e => e.IdProductFk);
+
                 entity.Property(e => e.IdDeliveryLine).HasColumnName("id_delivery_line");
 
                 entity.Property(e => e.CountOfProduct).HasColumnName("count_of_product");
@@ -119,6 +123,12 @@
                 entity.Property(e => e.TotalCost)
                     .HasColumnName("total_cost")
                     .HasColumnType("money");
+
+                entity.HasOne(d => d.IdUserFkNavigation)
+                    .WithMany(p => p.Order)
+                    .HasForeignKey(d => d.IdUserFk)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Check_User");
             });
 
             modelBuilder.Entity<OrderLine>(entity =>
@@ -127,6 +137,10 @@
                     .HasName("PK_Line_of_check");
 
                 entity.ToTable("Order_line");
+
+                entity.HasIndex(e => e.IdOrderFk);
+
+                entity.HasIndex(e => e.IdProductFk);
 
                 entity.Property(e => e.IdOrderLine).HasColumnName("id_order_line");
 
@@ -157,6 +171,8 @@
             {
                 entity.HasKey(e => e.IdProduct);
 
+                entity.HasIndex(e => e.IdCategoryFk);
+
                 entity.Property(e => e.IdProduct).HasColumnName("id_product");
 
                 entity.Property(e => e.IdCategoryFk).HasColumnName("id_category_FK");
@@ -179,23 +195,6 @@
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Product_Category");
             });
-
-            /*modelBuilder.Entity<User>(entity =>
-            {
-                entity.Property(e => e.Id).HasColumnName("id");
-
-                entity.Property(e => e.Login)
-                    .IsRequired()
-                    .HasColumnName("login")
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Password)
-                    .IsRequired()
-                    .HasColumnName("password")
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-            });*/
         }
     }
 }

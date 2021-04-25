@@ -7,16 +7,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DAL;
+using BLL.Interfaces;
 
 namespace ASPNetCore.Controllers
 {
     [Produces("application/json")]
     public class AccountController : Controller
     {
+        private readonly IDbCrud dbOp;
+
         private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager; 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
+        private readonly SignInManager<User> _signInManager;
+        public AccountController(IDbCrud dbCrud, UserManager<User> userManager, SignInManager<User> signInManager)
         {
+            dbOp = dbCrud;
             _userManager = userManager;
             _signInManager = signInManager;
         }
@@ -27,23 +31,27 @@ namespace ASPNetCore.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = new User
-                {
-                    Email = model.LoginPhoneNumber,
-                    UserName = model.LoginPhoneNumber
-                };
+                User user = new User();
+                user.Email = model.LoginPhoneNumber;
+                user.UserName = model.LoginPhoneNumber;
 
                 // Добавление нового пользователя
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    OrderModel orderModel = new OrderModel();
+                    orderModel.TotalCost = 0;
+                    orderModel.DateAndTime = DateTime.Now;
+                    orderModel.IdUserFk = user.Id; //подключаем внешний ключ, связаннный с id user
+                    dbOp.CreateOrder(orderModel);
+
                     await _userManager.AddToRoleAsync(user, "user");
                     // установка куки
                     await _signInManager.SignInAsync(user, false);
                     var msg = new
                     {
                         message = "Регистрация успешно пройдена, " + user.UserName + "!",
-                        oki=1
+                        oki = 1
                     };
                     return Ok(msg);
                 }
@@ -104,7 +112,7 @@ namespace ASPNetCore.Controllers
                         message = "Вход не выполнен.",
                         error = ModelState.Values.SelectMany(e => e.Errors.Select(er => er.ErrorMessage)),
                         oki = 2,
-                        role= "guest"
+                        role = "guest"
                     };
                     return Ok(errorMsg);
                 }
@@ -154,10 +162,11 @@ namespace ASPNetCore.Controllers
                 };
                 return Ok(msg);
             }
-            else {
+            else
+            {
                 var message = "Вы вошли как: " + usr.UserName;
 
-                var role="";
+                var role = "";
                 if (usr.UserName == "lizakurochkina")
                     role = "admin";
                 else role = "user";
@@ -165,12 +174,12 @@ namespace ASPNetCore.Controllers
                 var msg = new
                 {
                     message,
-                    oki=1,
+                    oki = 1,
                     role
                 };
                 return Ok(msg);
-             }
+            }
         }
         private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
     }
-    }
+}

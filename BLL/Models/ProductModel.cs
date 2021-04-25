@@ -10,7 +10,7 @@ namespace BLL.Models
         public int? ScorGodnostiO { get; set; }
         public string Title { get; set; }
         public int IdCategoryFk { get; set; }
-
+        public string NameCategory { get; set; }
         public ProductModel(Product s)
         {
             IdProduct = s.IdProduct;
@@ -18,6 +18,8 @@ namespace BLL.Models
             ScorGodnostiO = s.ScorGodnostiO;
             Title = s.Title;
             IdCategoryFk = s.IdCategoryFk;
+
+            NameCategory = s.IdCategoryFkNavigation.Name; //название категории
         }
 
         public ProductModel() { }

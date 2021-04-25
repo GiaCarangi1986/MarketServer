@@ -16,7 +16,9 @@ namespace DAL.Repositories
 
         public List<OrderLine> GetList()
         {
-            return db.OrderLine.ToList();
+            //return db.OrderLine.ToList();
+            List<OrderLine> nl = db.OrderLine.Include(s => s.IdOrderFkNavigation).Include(e => e.IdProductFkNavigation).ToList();
+            return nl;
         }
 
         public OrderLine GetItem(int id)

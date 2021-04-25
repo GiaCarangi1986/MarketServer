@@ -18,7 +18,9 @@ namespace DAL.Repositories
 
         public List<Product> GetList()
         {
-            return db.Product.ToList();
+            //return db.Product.ToList();
+            List<Product> nl = db.Product.Include(s => s.IdCategoryFkNavigation).Include(cl => cl.OrderLine).Include(dl => dl.DeliveryLine).ToList(); // убери!
+            return nl;
         }
 
         public Product GetItem(int id)

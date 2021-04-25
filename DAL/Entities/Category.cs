@@ -1,9 +1,7 @@
-﻿
-namespace DAL
+﻿namespace DAL
 {
     using System;
     using System.Collections.Generic;
-
     public partial class Category
     {
         public Category()

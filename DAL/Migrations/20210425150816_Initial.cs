@@ -74,20 +74,6 @@ namespace DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Order",
-                columns: table => new
-                {
-                    id_order = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    date_and_time = table.Column<DateTime>(type: "datetime", nullable: false),
-                    total_cost = table.Column<decimal>(type: "money", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Check", x => x.id_order);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -191,6 +177,27 @@ namespace DAL.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Order",
+                columns: table => new
+                {
+                    id_order = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    date_and_time = table.Column<DateTime>(type: "datetime", nullable: false),
+                    total_cost = table.Column<decimal>(type: "money", nullable: false),
+                    IdUserFk = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Check", x => x.id_order);
+                    table.ForeignKey(
+                        name: "FK_Check_User",
+                        column: x => x.IdUserFk,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -324,6 +331,11 @@ namespace DAL.Migrations
                 column: "id_product_FK");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Order_IdUserFk",
+                table: "Order",
+                column: "IdUserFk");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Order_line_id_order_FK",
                 table: "Order_line",
                 column: "id_order_FK");
@@ -366,9 +378,6 @@ namespace DAL.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
                 name: "Delivery");
 
             migrationBuilder.DropTable(
@@ -376,6 +385,9 @@ namespace DAL.Migrations
 
             migrationBuilder.DropTable(
                 name: "Product");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Category");

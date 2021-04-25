@@ -19,7 +19,9 @@ namespace DAL.Repositories
 
         public List<User> GetList()
         {
-            return db.User.ToList();
+            //return db.User.ToList();
+            List<User> nl = db.User.Include(s => s.Order).ToList();
+            return nl;
         }
 
         public User GetItem(string id)

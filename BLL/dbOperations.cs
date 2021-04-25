@@ -28,7 +28,7 @@ namespace BLL
 
         public int CreateOrder(OrderModel o)
         {
-            db.Orders.Create(new Order() { DateAndTime = o.DateAndTime, TotalCost = o.TotalCost});
+            db.Orders.Create(new Order() { DateAndTime = o.DateAndTime, TotalCost = o.TotalCost, IdUserFk=o.IdUserFk});
             Save();
             int id = db.Orders.GetList().Where(i=>i.DateAndTime == o.DateAndTime && i.TotalCost == o.TotalCost).First().IdOrder;
             return id;
@@ -117,10 +117,16 @@ namespace BLL
             return cl;
         }
 
-        public void CreateProduct(ProductModel c)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="c"></param>
+        public int CreateProduct(ProductModel c)
         {
             db.Products.Create(new Product() { NowCost = c.NowCost, ScorGodnostiO = c.ScorGodnostiO, Title = c.Title, IdCategoryFk = c.IdCategoryFk });
             Save();
+
+            return db.Products.GetList().LastOrDefault().IdProduct;
         }
 
         public void UpdateProduct(ProductModel c)
@@ -238,11 +244,13 @@ namespace BLL
         {
             return db.OrderLines.GetList().Select(i => new OrderLineModel(i)).Where(i => i.IdOrderLine == id).ToList();
         }
-        public void CreateOrderLine(OrderLineModel c)
+        public int CreateOrderLine(OrderLineModel c)
         {
             db.OrderLines.Create(new OrderLine() { MuchOfProducts = c.MuchOfProducts, CostForBuyer = c.CostForBuyer, IdOrderFk = c.IdOrderFk, IdProductFk = c.IdProductFk });
             Save();
-            
+
+            return db.OrderLines.GetList().LastOrDefault().IdOrderLine;
+
             //var ord = db.Orders.GetItem(c.Order_ID_FK);
             //var toc = db.TypesOfCargo.GetItem(c.TypeOfCargo_ID_FK);
             //if (ord!=null)

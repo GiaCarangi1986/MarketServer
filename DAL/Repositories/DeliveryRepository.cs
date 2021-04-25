@@ -16,7 +16,9 @@ namespace DAL.Repositories
 
         public List<Delivery> GetList()
         {
-            return db.Delivery.ToList();
+            //return db.Delivery.ToList();
+            List<Delivery> nl = db.Delivery.Include(s => s.DeliveryLine).ToList();
+            return nl;
         }
 
         public Delivery GetItem(int id)

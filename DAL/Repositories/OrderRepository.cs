@@ -16,9 +16,9 @@ namespace DAL.Repositories
 
         public List<Order> GetList()
         {
-            /*List<Order> nl = db.Order.Include(s => s.Status).Include(cl=> cl.Customer).Include(cour=>cour.Courier).ToList(); // убери!
-            return nl;*/
-            return db.Order.ToList();
+            //return db.Order.ToList();
+            List<Order> nl = db.Order.Include(s => s.OrderLine).Include(e => e.IdUserFkNavigation).ToList();
+            return nl;
         }
 
         public Order GetItem(int id)

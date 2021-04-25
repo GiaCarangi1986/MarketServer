@@ -45,7 +45,7 @@ namespace BLL.Interfaces
         #endregion
 
         #region CRUDProduct
-        void CreateProduct(ProductModel s);
+        int CreateProduct(ProductModel s);
         void UpdateProduct(ProductModel s);
         void DeleteProduct(int id);
         #endregion
@@ -57,7 +57,7 @@ namespace BLL.Interfaces
         #endregion
 
         #region CRUDOrderLine
-        void CreateOrderLine(OrderLineModel c);
+        int CreateOrderLine(OrderLineModel c);
         void UpdateOrderLine(OrderLineModel c);
         void DeleteOrderLine(int id);
         #endregion

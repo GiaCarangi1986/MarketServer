@@ -67,7 +67,7 @@ namespace ASPNetCore.Controllers
                 return BadRequest(ModelState);
             }
 
-            dbOp.CreateProduct(product);
+            product.IdProduct = dbOp.CreateProduct(product);
             /*_context.Product.Add(product);
             await _context.SaveChangesAsync();*/
 

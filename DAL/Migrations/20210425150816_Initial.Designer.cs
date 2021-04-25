@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(MarketContext))]
-    [Migration("20210418095325_Initial")]
+    [Migration("20210425150816_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -108,12 +108,16 @@ namespace DAL.Migrations
                         .HasColumnName("date_and_time")
                         .HasColumnType("datetime");
 
+                    b.Property<string>("IdUserFk");
+
                     b.Property<decimal>("TotalCost")
                         .HasColumnName("total_cost")
                         .HasColumnType("money");
 
                     b.HasKey("IdOrder")
                         .HasName("PK_Check");
+
+                    b.HasIndex("IdUserFk");
 
                     b.ToTable("Order");
                 });
@@ -350,6 +354,14 @@ namespace DAL.Migrations
                         .WithMany("DeliveryLine")
                         .HasForeignKey("IdProductFk")
                         .HasConstraintName("FK_Delivery_line_Product");
+                });
+
+            modelBuilder.Entity("DAL.Order", b =>
+                {
+                    b.HasOne("DAL.User", "IdUserFkNavigation")
+                        .WithMany("Order")
+                        .HasForeignKey("IdUserFk")
+                        .HasConstraintName("FK_Check_User");
                 });
 
             modelBuilder.Entity("DAL.OrderLine", b =>

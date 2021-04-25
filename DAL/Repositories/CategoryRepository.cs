@@ -19,7 +19,9 @@ namespace DAL.Repositories
 
         public List<Category> GetList()
         {
-            return db.Category.ToList();
+            //return db.Category.ToList();
+            List<Category> nl = db.Category.Include(s => s.Product).ToList();
+            return nl;
         }
 
         public Category GetItem(int id)
