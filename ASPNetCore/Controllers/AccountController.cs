@@ -175,6 +175,7 @@ namespace ASPNetCore.Controllers
                 {
                     message,
                     oki = 1,
+                    //userId = usr.Id,
                     role
                 };
                 return Ok(msg);

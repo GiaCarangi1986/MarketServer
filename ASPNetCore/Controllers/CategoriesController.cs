@@ -12,7 +12,7 @@ using BLL.Models;
 
 namespace ASPNetCore.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/categories")]
     [ApiController]
     public class CategoriesController : Controller
     {

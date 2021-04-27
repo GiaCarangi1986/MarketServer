@@ -28,7 +28,29 @@ namespace ASPNetCore.Controllers
         [HttpGet]
         public IEnumerable<OrderLineModel> GetAll()
         {
-            return dbOp.GetAllOrderLines();
+            List<OrderLineModel> orderLines = new List<OrderLineModel>();
+            List<DeliveryLineModel> deliveryLines = new List<DeliveryLineModel>();
+
+            deliveryLines = dbOp.GetAllDeliveryLines();
+            orderLines = dbOp.GetAllOrderLines();
+
+            //делаем это, чтобы получить CountMax - кол-во продуктов из данной поставки
+            var result = orderLines.Join(deliveryLines,
+                o => o.IdProductFk,
+                d => d.IdProductFk,
+                (o, d) => new { CountMax = d.RemainingProduct , IdProductFk = o.IdProductFk });
+
+            int i = 0, j=0;
+            for (var item = result.First(); i<result.Count(); i++)
+            {
+                for (var temp = orderLines.First(); j < orderLines.Count(); j++)
+                {
+                    if (item.IdProductFk == temp.IdProductFk)
+                        orderLines.ElementAt(j).CountMax = result.ElementAt(i).CountMax;
+                }
+            }
+
+            return orderLines;
         }
 
         [HttpGet("{id}")]
@@ -39,21 +61,37 @@ namespace ASPNetCore.Controllers
                 return BadRequest(ModelState);
             }
 
-            var orderLine = dbOp.GetOrderLine(id);
-            return Ok(orderLine);
+            int ok = 2; //не найдено
+            var orderList = dbOp.GetAllOrderLines();
+            foreach (var item in orderList)
+            {
+                if (item.IdProductFk == id)
+                {
+                    ok = 1; //найдено
+                    break;
+                }
+            }
+
+            return Ok(ok);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateOrderLine([FromBody] OrderLineModel orderLine)
+        public async Task<IActionResult> CreateOrderLine([FromBody] ProductModel product)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
+            OrderLineModel orderLine = new OrderLineModel();
+            orderLine.IdProductFk = product.IdProduct;
+            orderLine.MuchOfProducts = 1;
+            orderLine.CostForBuyer = product.NowCost;
+            orderLine.IdOrderFk = 2; //не знаю как сделать так, чтобы доставать id из корзины для текущего пользователя
+
             orderLine.IdOrderLine = dbOp.CreateOrderLine(orderLine);
 
-            return CreatedAtAction("GetProduct", new { id = orderLine.IdOrderLine }, orderLine);
+            return CreatedAtAction("GetOrderLine", new { id = orderLine.IdOrderLine }, orderLine);
         }
 
         [HttpPut("{id}")]
