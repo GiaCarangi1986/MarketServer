@@ -19,6 +19,12 @@ namespace BLL
         {
             db = repos;
         }
+        #region User
+        public List<UserModel> GetAllUsers()
+        {
+            return db.Users.GetList().Select(i => new UserModel(i)).ToList();
+        }
+        #endregion
 
         #region Order
         public List<OrderModel> GetAllOrders()

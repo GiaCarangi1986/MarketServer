@@ -92,6 +92,13 @@ namespace ASPNetCore.Controllers
                     await _signInManager.PasswordSignInAsync(model.LoginPhoneNumber, model.Password, model.RememberMe, false);
                 if (result.Succeeded)
                 {
+                    List<UserModel> users = new List<UserModel>();
+                    users = dbOp.GetAllUsers();
+                    var userId = "";
+                    foreach (var item in users)
+                        if (item.UserName == model.LoginPhoneNumber)
+                            userId = item.ID;
+
                     var role = "";
                     if (model.LoginPhoneNumber == "lizakurochkina")
                         role = "admin";
@@ -100,7 +107,8 @@ namespace ASPNetCore.Controllers
                     {
                         message = "Выполнен вход пользователем: " + model.LoginPhoneNumber,
                         oki = 1,
-                        role
+                        role,
+                        userId
                     };
                     return Ok(msg);
                 }
@@ -158,6 +166,7 @@ namespace ASPNetCore.Controllers
                 {
                     message,
                     oki = 2,
+                    userId = 0,
                     role = "guest"
                 };
                 return Ok(msg);
@@ -175,7 +184,7 @@ namespace ASPNetCore.Controllers
                 {
                     message,
                     oki = 1,
-                    //userId = usr.Id,
+                    userId = usr.Id,
                     role
                 };
                 return Ok(msg);

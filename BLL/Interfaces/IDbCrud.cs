@@ -15,6 +15,7 @@ namespace BLL.Interfaces
         List<CategoryModel> GetAllCategories();
         List<DeliveryModel> GetAllDeliveries();
         List<OrderLineModel> GetAllOrderLines();
+        List<UserModel> GetAllUsers();
         #endregion
 
         #region GetOne
